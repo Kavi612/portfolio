@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kavii-portfolio-henna.vercel.app/sitemap.xml
