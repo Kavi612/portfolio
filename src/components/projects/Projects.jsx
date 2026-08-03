@@ -8,6 +8,15 @@ import { fadeUp, staggerContainer, viewportOnce } from '@/utils/animations'
 export default function Projects() {
   const scrollerRef = useRef(null)
   const [active, setActive] = useState(0)
+  const [isDesktopCarousel, setIsDesktopCarousel] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px)')
+    const update = () => setIsDesktopCarousel(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
 
   const updateActiveFromScroll = useCallback(() => {
     const el = scrollerRef.current
@@ -18,6 +27,8 @@ export default function Projects() {
   }, [])
 
   useEffect(() => {
+    if (!isDesktopCarousel) return undefined
+
     const el = scrollerRef.current
     if (!el) return undefined
 
@@ -34,7 +45,7 @@ export default function Projects() {
     el.addEventListener('scroll', onScroll, { passive: true })
     updateActiveFromScroll()
     return () => el.removeEventListener('scroll', onScroll)
-  }, [updateActiveFromScroll])
+  }, [updateActiveFromScroll, isDesktopCarousel])
 
   const scrollToIndex = (index) => {
     const el = scrollerRef.current
@@ -45,6 +56,7 @@ export default function Projects() {
   }
 
   const onKeyDown = (event) => {
+    if (!isDesktopCarousel) return
     if (event.key === 'ArrowRight') {
       event.preventDefault()
       scrollToIndex(active + 1)
@@ -83,19 +95,39 @@ export default function Projects() {
             variants={fadeUp}
             className="mt-4 max-w-2xl text-base text-text-muted sm:text-lg"
           >
-            Production AI products — swipe or use arrows to explore each build.
+            <span className="md:hidden">
+              Production AI products — scroll down to explore each build.
+            </span>
+            <span className="hidden md:inline">
+              Production AI products — swipe or use arrows to explore each build.
+            </span>
           </motion.p>
         </motion.div>
       </div>
 
+      {/* Mobile — vertical stack, normal page scroll */}
+      <motion.div
+        className="section-container flex flex-col gap-8 md:hidden"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+      >
+        {projects.map((project) => (
+          <motion.div key={project.id} variants={fadeUp}>
+            <ProjectCard project={project} />
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Desktop — horizontal snap carousel */}
       <div
-        className="relative outline-none"
+        className="relative hidden outline-none md:block"
         tabIndex={0}
         onKeyDown={onKeyDown}
         aria-roledescription="carousel"
         aria-label="Featured projects"
       >
-        {/* Padding lives inside snap-items so each slide is exactly one viewport width */}
         <div ref={scrollerRef} className="snap-x-container">
           {projects.map((project, index) => (
             <div key={project.id} className="snap-item">
@@ -107,7 +139,7 @@ export default function Projects() {
         </div>
 
         <div className="section-container mt-6 flex items-center justify-between gap-4 sm:mt-8">
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               aria-label="Previous project"
@@ -131,7 +163,7 @@ export default function Projects() {
           </div>
 
           <div
-            className="flex flex-1 items-center justify-center gap-1 md:justify-end"
+            className="flex flex-1 items-center justify-end gap-1"
             role="tablist"
             aria-label="Project indicators"
           >
