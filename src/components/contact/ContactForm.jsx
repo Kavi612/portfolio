@@ -1,15 +1,16 @@
 import { useMemo, useState } from 'react'
-import { useForm } from '@formspree/react'
 
-// TODO: replace with real Formspree form ID from formspree.io
-const FORMSPREE_FORM_ID = 'YOUR_FORM_ID'
+const TO_EMAIL = 'kavirathna125@gmail.com'
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${TO_EMAIL}`
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function ContactForm() {
-  const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [touched, setTouched] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState('')
 
   const errors = useMemo(() => {
     const next = {}
@@ -35,11 +36,41 @@ export default function ContactForm() {
   const onSubmit = async (event) => {
     event.preventDefault()
     setTouched({ name: true, email: true, message: true })
-    if (!isValid || state.submitting) return
-    await handleSubmit(event)
+    setError('')
+    if (!isValid || submitting) return
+
+    setSubmitting(true)
+    try {
+      const response = await fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+          _subject: `Portfolio message from ${form.name.trim()}`,
+          _template: 'table',
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Send failed')
+      }
+
+      setSucceeded(true)
+      setForm({ name: '', email: '', message: '' })
+      setTouched({})
+    } catch {
+      setError('Could not send right now. Email me directly at kavirathna125@gmail.com')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
-  if (state.succeeded) {
+  if (succeeded) {
     return (
       <div className="glow-card flex min-h-[320px] flex-col items-center justify-center p-8 text-center">
         <p className="text-xl font-semibold text-text-main">Message sent. I&apos;ll reply soon.</p>
@@ -72,7 +103,7 @@ export default function ContactForm() {
           onBlur={onBlur}
           placeholder="Your name"
           className={inputClass}
-          disabled={state.submitting}
+          disabled={submitting}
           autoComplete="name"
         />
         {touched.name && errors.name && (
@@ -93,7 +124,7 @@ export default function ContactForm() {
           onBlur={onBlur}
           placeholder="you@email.com"
           className={inputClass}
-          disabled={state.submitting}
+          disabled={submitting}
           autoComplete="email"
         />
         {touched.email && errors.email && (
@@ -114,26 +145,26 @@ export default function ContactForm() {
           onBlur={onBlur}
           placeholder="Tell me about the role, project, or idea..."
           className={`${inputClass} resize-y`}
-          disabled={state.submitting}
+          disabled={submitting}
         />
         {touched.message && errors.message && (
           <p className="mt-1 text-xs text-red-400">{errors.message}</p>
         )}
       </div>
 
-      {state.errors && (
+      {error && (
         <p className="rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 text-sm text-red-300">
-          Something went wrong. Check your Formspree form ID or try again in a moment.
+          {error}
         </p>
       )}
 
       <button
         type="submit"
         data-cursor="hover"
-        disabled={!isValid || state.submitting}
+        disabled={!isValid || submitting}
         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-blue-primary px-5 py-3 text-sm font-semibold text-white shadow-blue-glow transition enabled:hover:shadow-blue-glow-lg disabled:cursor-not-allowed disabled:opacity-45"
       >
-        {state.submitting ? (
+        {submitting ? (
           <>
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
             Sending...

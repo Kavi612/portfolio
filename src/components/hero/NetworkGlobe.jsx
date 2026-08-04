@@ -1,11 +1,10 @@
 import { useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Sparkles } from '@react-three/drei'
 import * as THREE from 'three'
 
-const POINT_COUNT = 90
+const POINT_COUNT = 52
 const RADIUS = 2.15
-const LINK_DISTANCE = 1.15
+const LINK_DISTANCE = 0.95
 
 function fibonacciSphere(count, radius) {
   const points = []
@@ -64,14 +63,14 @@ function NetworkMesh() {
 
   useFrame((_, delta) => {
     if (!groupRef.current) return
-    groupRef.current.rotation.y += delta * 0.18
-    groupRef.current.rotation.x = Math.sin(performance.now() * 0.00025) * 0.12
+    groupRef.current.rotation.y += delta * 0.04
+    groupRef.current.rotation.x = Math.sin(performance.now() * 0.00012) * 0.06
 
     pulse.current += delta
     if (pointsRef.current) {
       const mat = pointsRef.current.material
-      mat.opacity = 0.75 + Math.sin(pulse.current * 2.2) * 0.2
-      mat.size = 0.055 + Math.sin(pulse.current * 2.2) * 0.012
+      mat.opacity = 0.7 + Math.sin(pulse.current * 0.8) * 0.08
+      mat.size = 0.048 + Math.sin(pulse.current * 0.8) * 0.004
     }
   })
 
@@ -80,11 +79,11 @@ function NetworkMesh() {
       <points ref={pointsRef} geometry={pointsGeo}>
         <pointsMaterial
           color="#60A5FA"
-          size={0.06}
+          size={0.05}
           sizeAttenuation
           transparent
           depthWrite={false}
-          opacity={0.9}
+          opacity={0.75}
         />
       </points>
 
@@ -92,19 +91,10 @@ function NetworkMesh() {
         <lineBasicMaterial
           color="#3B82F6"
           transparent
-          opacity={0.22}
+          opacity={0.14}
           depthWrite={false}
         />
       </lineSegments>
-
-      <Sparkles
-        count={28}
-        scale={4.2}
-        size={2}
-        speed={0.25}
-        opacity={0.35}
-        color="#60A5FA"
-      />
     </group>
   )
 }
@@ -112,14 +102,14 @@ function NetworkMesh() {
 export default function NetworkGlobe() {
   return (
     <div className="relative h-[320px] w-full sm:h-[400px] lg:h-[480px]">
-      <div className="pointer-events-none absolute inset-0 rounded-full bg-blue-glow/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 rounded-full bg-blue-glow/15 blur-3xl" />
       <Canvas
         camera={{ position: [0, 0, 6.2], fov: 42 }}
         dpr={[1, 1.75]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={0.4} />
+        <ambientLight intensity={0.35} />
         <NetworkMesh />
       </Canvas>
     </div>

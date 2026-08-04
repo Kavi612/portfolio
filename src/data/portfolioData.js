@@ -211,7 +211,7 @@ export const internships = [
     location: 'Madurai',
     description:
       'Built AST parsing pipelines and FAISS vector embeddings that improved retrieval speed by ~40%.',
-    image: 'Innovate.png',
+    image: 'techpuram.png',
     certificate: null,
     certificateUrl: null,
     type: 'internship',
@@ -226,7 +226,7 @@ export const internships = [
     location: 'Coimbatore',
     description:
       'Delivering real-world client projects as a Full Stack MERN intern based in Coimbatore.',
-    image: 'Smart bridge.png',
+    image: 'skillhive.png',
     certificate: null,
     certificateUrl: null,
     type: 'internship',

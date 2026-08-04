@@ -61,8 +61,8 @@ export default function TimelineItem({
               {imgSrc ? (
                 <img
                   src={imgSrc}
-                  alt={`${orgName} certificate`}
-                  className="h-20 w-full rounded-xl object-cover sm:h-24"
+                  alt={`${orgName} offer letter`}
+                  className="h-28 w-full rounded-xl border border-blue-glow/30 bg-white object-contain object-center sm:h-32 sm:w-36"
                   loading="lazy"
                 />
               ) : (
