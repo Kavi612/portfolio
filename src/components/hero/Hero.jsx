@@ -187,7 +187,7 @@ export default function Hero() {
 
             <MagneticButton
               href={personal.resumeUrl}
-              download
+              download="Kavirathna_Velmurugan_Resume.pdf"
               className="inline-flex min-h-11 items-center rounded-xl border border-blue-accent/70 bg-transparent px-6 py-3 text-sm font-semibold text-blue-light transition-colors hover:border-blue-light hover:bg-blue-glow/30"
             >
               Download Resume
