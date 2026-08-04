@@ -59,8 +59,8 @@ export default function Contact() {
               </span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-text-muted sm:text-lg">
-              Open to AI/ML, Full Stack, and AWS roles — especially enterprise product work
-              at teams like Deloitte. Reach out anytime.
+              Open to AI/ML, Full Stack, and AWS roles — especially at product-based
+              companies building real-world software. Reach out anytime.
             </p>
 
             <div className="mt-8 flex flex-col gap-3">
