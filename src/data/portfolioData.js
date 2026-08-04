@@ -1,5 +1,3 @@
-import resumePdf from '@/assets/Kavirathna_Resume .pdf.pdf'
-
 export const personal = {
   name: 'Kavirathna Velmurugan',
   shortName: 'Kavirathna',
@@ -15,7 +13,7 @@ export const personal = {
   graduation: 'May 2027',
   cgpa: 7.97,
   subtitle: 'I build AI products that solve real problems.',
-  resumeUrl: resumePdf,
+  resumeUrl: '/KavirathnaResume.pdf',
   roles: [
     'AI/ML Engineer',
     'Full Stack Developer',
