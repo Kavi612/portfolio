@@ -11,7 +11,7 @@ export const personal = {
   degree: 'B.Tech AI & Data Science',
   year: '3rd year',
   graduation: 'May 2027',
-  cgpa: 7.97,
+  cgpa: 8.13,
   subtitle: 'I build AI products that solve real problems.',
   resumeUrl: '/KavirathnaResume.pdf',
   roles: [
@@ -24,7 +24,7 @@ export const personal = {
 
 export const about = {
   headline: 'From Dindigul to MNC — I build AI products that matter.',
-  bio: "I'm a 3rd year AI & Data Science student at SSM Institute of Engineering and Technology, graduating May 2027 with CGPA 7.97. I specialize in Full Stack Development, Machine Learning, AWS Cloud — building real production-grade AI products. My goal is to join MNCs like Deloitte where I can solve real enterprise problems.",
+  bio: "I'm a 3rd year AI & Data Science student at SSM Institute of Engineering and Technology, graduating May 2027 with CGPA 8.13. I specialize in Full Stack Development, Machine Learning, AWS Cloud — building real production-grade AI products. My goal is to join MNCs like Deloitte where I can solve real enterprise problems.",
 }
 
 /** Alias used by hero / about / contact consumers */
@@ -33,7 +33,7 @@ export const profile = {
   name: personal.shortName,
   fullName: personal.name,
   bio: [
-    "I'm a 3rd year AI & Data Science student at SSM Institute of Engineering and Technology, graduating May 2027 with CGPA 7.97.",
+    "I'm a 3rd year AI & Data Science student at SSM Institute of Engineering and Technology, graduating May 2027 with CGPA 8.13.",
     'I specialize in Full Stack Development, Machine Learning, and AWS Cloud — building real production-grade AI products.',
     'My goal is to join MNCs like Deloitte where I can solve real enterprise problems.',
   ],
@@ -42,7 +42,7 @@ export const profile = {
 export const stats = [
   { label: 'Projects', value: 5, suffix: '', decimals: 0 },
   { label: 'Internships', value: 4, suffix: '', decimals: 0 },
-  { label: 'CGPA', value: 7.97, suffix: '', decimals: 2 },
+  { label: 'CGPA', value: 8.13, suffix: '', decimals: 2 },
   { label: 'Industry Certs', value: 2, suffix: '', decimals: 0 },
 ]
 

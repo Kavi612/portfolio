@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 /**
  * Animates a number from 0 to target when in view.
- * Always formats with `decimals` so CGPA eases as 0.00 → 7.97 (never flashes "8").
+ * Always formats with `decimals` so CGPA eases as 0.00 → 8.13 (never flashes "8").
  * Accepts `start` or `isInView` as the trigger flag.
  */
 export function useCountUp(
