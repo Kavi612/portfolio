@@ -40,7 +40,7 @@ export const profile = {
 }
 
 export const stats = [
-  { label: 'Projects', value: 6, suffix: '', decimals: 0 },
+  { label: 'Projects', value: 5, suffix: '', decimals: 0 },
   { label: 'Internships', value: 4, suffix: '', decimals: 0 },
   { label: 'CGPA', value: 8.13, suffix: '', decimals: 2 },
   { label: 'Industry Certs', value: 2, suffix: '', decimals: 0 },
@@ -101,16 +101,6 @@ export const projects = [
     liveUrl: 'https://datapilot-ej9z.vercel.app',
     githubUrl: 'https://github.com/Kavi612/datapilot',
     image: 'datapilot.png',
-  },
-  {
-    id: 'mselegant',
-    name: 'MS Elegant Collection',
-    tagline: 'Jewellery Startup Website',
-    description:
-      'Production website for a Dindigul jewellery startup — collection showcase, services, WhatsApp-first ordering flow, and brand storytelling for a local fine-jewellery business.',
-    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
-    liveUrl: 'https://mselegentcollection.vercel.app/',
-    image: 'mselegant.png',
   },
 ]
 
@@ -190,6 +180,19 @@ export const work = [
       'Built a real-time full stack queue management product with React, TypeScript, Node.js, MongoDB, and Socket.io.',
     tech: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io'],
     liveUrl: 'https://ssmskip-q.vercel.app',
+    type: 'work',
+  },
+  {
+    id: 'mselegant',
+    company: 'MS Elegant Collection',
+    org: 'MS Elegant Collection',
+    role: 'Web Developer',
+    duration: '2026',
+    period: '2026',
+    description:
+      'Designed and shipped the production website for a Dindigul jewellery startup — collection showcase, services, WhatsApp-first ordering flow, and brand storytelling.',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    liveUrl: 'https://mselegentcollection.vercel.app/',
     type: 'work',
   },
   {
