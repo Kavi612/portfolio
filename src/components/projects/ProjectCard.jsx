@@ -78,16 +78,18 @@ export default function ProjectCard({ project, isActive = false }) {
             Live Demo
             <ExternalLink size={15} />
           </a>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            data-cursor="hover"
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-blue-accent/70 px-5 py-2.5 text-sm font-semibold text-blue-light transition-colors hover:border-blue-light hover:bg-blue-glow/25"
-          >
-            GitHub
-            <Github size={15} />
-          </a>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="hover"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-blue-accent/70 px-5 py-2.5 text-sm font-semibold text-blue-light transition-colors hover:border-blue-light hover:bg-blue-glow/25"
+            >
+              GitHub
+              <Github size={15} />
+            </a>
+          )}
         </div>
       </div>
     </article>
