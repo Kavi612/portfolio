@@ -40,7 +40,7 @@ export const profile = {
 }
 
 export const stats = [
-  { label: 'Projects', value: 5, suffix: '', decimals: 0 },
+  { label: 'Projects', value: 6, suffix: '', decimals: 0 },
   { label: 'Internships', value: 4, suffix: '', decimals: 0 },
   { label: 'CGPA', value: 8.13, suffix: '', decimals: 2 },
   { label: 'Industry Certs', value: 2, suffix: '', decimals: 0 },
@@ -70,15 +70,24 @@ export const projects = [
     image: 'farmcredit.png',
   },
   {
-    id: 'pixelpen',
-    name: 'PixelPen AI',
-    tagline: 'AI Content Studio',
+    id: 'noticeportal',
+    name: 'Department Notice Portal',
+    tagline: 'AWS Academic Communication System',
     description:
-      'Multimodal content studio combining CLIP, BART, and Groq to generate, refine, and score creative assets end-to-end.',
-    tech: ['React', 'FastAPI', 'CLIP', 'BART', 'PyTorch', 'Groq'],
-    liveUrl: 'https://pixelpen-ai.vercel.app',
-    githubUrl: 'https://github.com/Kavi612/pixelpen_ai',
-    image: 'pixelpen.png',
+      'Role-based notice portal for HOD, faculty, and students — AI-assisted drafting, scheduled publishing, poster uploads, and student unread tracking on a serverless AWS stack in Mumbai.',
+    tech: [
+      'React',
+      'TypeScript',
+      'AWS Cognito',
+      'Lambda',
+      'DynamoDB',
+      'S3',
+      'SES',
+      'Groq',
+    ],
+    liveUrl: 'https://notice-portal-six.vercel.app/',
+    githubUrl: 'https://github.com/Kavi612/notice',
+    image: 'noticeportal.png',
   },
   {
     id: 'citycraft',
@@ -101,6 +110,17 @@ export const projects = [
     liveUrl: 'https://datapilot-ej9z.vercel.app',
     githubUrl: 'https://github.com/Kavi612/datapilot',
     image: 'datapilot.png',
+  },
+  {
+    id: 'pixelpen',
+    name: 'PixelPen AI',
+    tagline: 'AI Content Studio',
+    description:
+      'Multimodal content studio combining CLIP, BART, and Groq to generate, refine, and score creative assets end-to-end.',
+    tech: ['React', 'FastAPI', 'CLIP', 'BART', 'PyTorch', 'Groq'],
+    liveUrl: 'https://pixelpen-ai.vercel.app',
+    githubUrl: 'https://github.com/Kavi612/pixelpen_ai',
+    image: 'pixelpen.png',
   },
 ]
 
