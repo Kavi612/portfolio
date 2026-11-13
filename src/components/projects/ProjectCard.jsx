@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react'
+import Spotlight from '@/components/Spotlight'
 
 const imageModules = import.meta.glob('../../assets/projects/*.{png,jpg,jpeg,webp}', {
   eager: true,
@@ -17,7 +18,8 @@ export default function ProjectCard({ project, isActive = false }) {
   const src = resolveProjectImage(project.image)
 
   return (
-    <article
+    <Spotlight
+      as="article"
       className={`glow-card mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden md:min-h-[560px] md:flex-row ${
         isActive ? 'border-blue-accent/60 shadow-blue-glow-lg' : ''
       }`}
@@ -92,6 +94,6 @@ export default function ProjectCard({ project, isActive = false }) {
           )}
         </div>
       </div>
-    </article>
+    </Spotlight>
   )
 }

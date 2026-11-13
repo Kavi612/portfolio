@@ -40,13 +40,24 @@ export const profile = {
 }
 
 export const stats = [
-  { label: 'Projects', value: 5, suffix: '', decimals: 0 },
-  { label: 'Internships', value: 4, suffix: '', decimals: 0 },
+  { label: 'Projects', value: 6, suffix: '', decimals: 0 },
+  { label: 'Internships', value: 5, suffix: '', decimals: 0 },
   { label: 'CGPA', value: 8.01, suffix: '', decimals: 2 },
   { label: 'Industry Certs', value: 2, suffix: '', decimals: 0 },
 ]
 
 export const projects = [
+  {
+    id: 'dockforge',
+    name: 'DockForge',
+    tagline: 'Self-Healing AI for Docker',
+    description:
+      'Multi-agent GraphRAG system that generates Dockerfiles, runs docker build, and patches its own failures in a retry loop. 65% success rate vs 24% for naive RAG.',
+    tech: ['Python', 'LangGraph', 'Tree-sitter', 'NetworkX'],
+    liveUrl: 'https://github.com/Kavi612',
+    githubUrl: 'https://github.com/Kavi612',
+    image: 'dockforge.jpg',
+  },
   {
     id: 'botstudio',
     name: 'BotStudio',
@@ -156,41 +167,7 @@ export const skills = {
   Tools: ['Git', 'GitHub', 'Docker', 'Postman', 'VS Code', 'Figma'],
 }
 
-export const work = [
-  {
-    id: 'codedescriber',
-    company: 'Techpuram',
-    org: 'Techpuram',
-    role: 'AI/ML Engineer — Code Describer',
-    duration: '2025 – 2026',
-    period: '2025 – 2026',
-    description:
-      'Built Code Describer, an AI system that explains GitHub repositories end-to-end: multi-language code extraction, AST/symbol parsing, MiniLM embeddings + FAISS retrieval (~40% faster lookup), and FLAN-T5 / DeepSeek Coder generation of structured project explanations (trained and run on Google Colab GPU).',
-    tech: [
-      'Python',
-      'FLAN-T5',
-      'DeepSeek Coder',
-      'Sentence Transformers',
-      'FAISS',
-      'AST Parsing',
-      'Google Colab',
-    ],
-    githubUrl: 'https://github.com/Kavi612/codeDescriber',
-    type: 'work',
-  },
-  {
-    id: 'ssmskipq',
-    company: 'SSM SkipQ',
-    org: 'SSM SkipQ',
-    role: 'Full Stack Developer',
-    duration: '2026',
-    period: '2026',
-    description:
-      'Built a real-time full stack queue management product with React, TypeScript, Node.js, MongoDB, and Socket.io.',
-    tech: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io'],
-    liveUrl: 'https://ssmskip-q.vercel.app',
-    type: 'work',
-  },
+export const clientProjects = [
   {
     id: 'mselegant',
     company: 'MS Elegant Collection',
@@ -202,7 +179,8 @@ export const work = [
       'Designed and shipped the production website for a Dindigul jewellery startup — collection showcase, services, WhatsApp-first ordering flow, and brand storytelling.',
     tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
     liveUrl: 'https://mselegentcollection.vercel.app/',
-    type: 'work',
+    githubUrl: 'https://github.com/Kavi612/zeo_jellwary',
+    type: 'client work',
   },
   {
     id: 'jaimagilan',
@@ -215,44 +193,122 @@ export const work = [
       'Designed and shipped a responsive business website with React and Tailwind CSS.',
     tech: ['React', 'Tailwind'],
     liveUrl: 'https://eclectic-pony-a01cd3.netlify.app',
-    type: 'work',
+    githubUrl: 'https://github.com/Kavi612',
+    type: 'client work',
   },
 ]
 
-/** Alias for Experience section consumers */
-export const workExperience = work
+export const work = clientProjects
 
-export const internships = [
+/** Alias for Experience section consumers */
+export const workExperience = clientProjects
+
+export const pairedInternships = [
   {
-    id: 'techpuram',
-    company: 'Techpuram, Madurai',
-    org: 'Techpuram',
-    role: 'AI/ML Developer Intern',
-    duration: 'Nov 2025 – May 2026',
-    period: 'Nov 2025 – May 2026',
-    location: 'Madurai',
-    description:
-      'Built AST parsing pipelines and FAISS vector embeddings that improved retrieval speed by ~40%.',
-    image: 'techpuram.png',
-    certificate: null,
-    certificateUrl: null,
-    type: 'internship',
+    id: 'row-skillhive',
+    left: {
+      company: 'Skill Hive Innovations',
+      role: 'Full Stack MERN Intern',
+      dates: 'May 2026 – Oct 2026',
+      location: 'Coimbatore (Remote)',
+    },
+    right: {
+      title: 'Invita',
+      subtitle: 'Live Client Platform · Excellent Engineering Enterprises',
+      body: 'Built the Next.js 16 / TypeScript frontend for a community and family management platform. Central role-based permission matrix across four roles, a public no-login RSVP flow with headcount and calendar export, and a single-setting data-source switch for fixtures or a real REST client.',
+      tags: ['Next.js 16', 'TypeScript', 'Tailwind v4', 'Zustand'],
+      buttons: [
+        {
+          label: 'Live Demo',
+          href: 'https://skillhiveinnovations.com',
+          isPrimary: true,
+          icon: 'external',
+        },
+        {
+          label: 'View GitHub',
+          href: 'https://github.com/Kavi612/invita',
+          isPrimary: false,
+          icon: 'github',
+        },
+        {
+          label: 'View Offer Letter',
+          href: 'skillhive.png',
+          isOfferLetter: true,
+          isPrimary: false,
+          icon: 'file',
+        },
+      ],
+    },
   },
   {
-    id: 'skillhive',
-    company: 'Skill Hive Innovations',
-    org: 'Skill Hive Innovations',
-    role: 'Full Stack MERN Intern',
-    duration: 'May 2026 – Present',
-    period: 'May 2026 – Present',
-    location: 'Coimbatore',
-    description:
-      'Delivering real-world client projects as a Full Stack MERN intern based in Coimbatore.',
-    image: 'skillhive.png',
-    certificate: null,
-    certificateUrl: null,
-    type: 'internship',
+    id: 'row-techpuram',
+    left: {
+      company: 'Techpuram',
+      role: 'AI/ML Developer Intern',
+      dates: 'Nov 2025 – Mar 2026',
+      location: 'Madurai (Remote)',
+    },
+    right: {
+      title: 'Code Describer',
+      subtitle: 'AI GitHub Repository Explainer',
+      body: 'Explains any GitHub repository end-to-end with multi-language code extraction, AST and symbol parsing, MiniLM embeddings with FAISS retrieval for ~40% faster lookup, and FLAN-T5 or DeepSeek Coder generation of structured project explanations.',
+      tags: ['Python', 'FAISS', 'MiniLM', 'FLAN-T5'],
+      buttons: [
+        {
+          label: 'View GitHub',
+          href: 'https://github.com/Kavi612/codeDescriber',
+          isPrimary: true,
+          icon: 'github',
+        },
+        {
+          label: 'View Offer Letter',
+          href: 'techpuram.png',
+          isOfferLetter: true,
+          isPrimary: false,
+          icon: 'file',
+        },
+      ],
+    },
   },
+  {
+    id: 'row-ambattur',
+    left: {
+      company: 'Ambattur Fashion India Pvt Ltd',
+      role: 'App Development Intern',
+      dates: 'Aug 2026 – Sep 2026',
+      location: 'Chennai (On-site)',
+    },
+    right: {
+      title: 'SkipQ Mobile',
+      subtitle: 'Three-Portal Flutter App',
+      body: 'Converted the SkipQ web app into a three-portal Flutter mobile app for Student, Manager and Super Admin, running on the shared Node.js/Express and MongoDB backend. Integrated Razorpay checkout end-to-end in test mode.',
+      tags: ['Flutter', 'Node.js', 'Express', 'MongoDB'],
+      buttons: [
+        {
+          label: 'View Live',
+          href: 'https://ssmskip-q.vercel.app',
+          isPrimary: true,
+          icon: 'external',
+        },
+        {
+          label: 'View GitHub',
+          href: 'https://github.com/Kavi612/SsmskipQ',
+          isPrimary: false,
+          icon: 'github',
+        },
+        {
+          label: 'View Certificate',
+          href: 'ambattur.jpg',
+          isOfferLetter: true,
+          isPrimary: false,
+          icon: 'file',
+        },
+      ],
+    },
+  },
+]
+
+export const otherInternships = [
   {
     id: 'awseducate',
     company: 'AWS Educate',
@@ -262,10 +318,8 @@ export const internships = [
     period: 'Jan–Mar 2026',
     location: 'Virtual',
     description:
-      'Completed the virtual internship with Grade O Outstanding — highest performance tier.',
-    image: 'AWS.png',
-    certificate: null,
-    certificateUrl: null,
+      'Completed the virtual internship with Grade O Outstanding — highest performance tier, designing and deploying ML-integrated solutions across AWS compute, storage and inference services.',
+    certificateUrl: 'AWS.png',
     type: 'internship',
   },
   {
@@ -277,13 +331,13 @@ export const internships = [
     period: 'Jul 2025',
     location: 'On-site',
     description:
-      'Worked with an HP Enterprise delivery partner (ISO 9001:2015) on AI & ML solutions.',
-    image: 'Gateway.jpg',
-    certificate: null,
-    certificateUrl: null,
+      'Worked with an HP Enterprise delivery partner (ISO 9001:2015) on AI & ML solutions following enterprise delivery standards.',
+    certificateUrl: 'Gateway.jpg',
     type: 'internship',
   },
 ]
+
+export const internships = otherInternships
 
 export const certifications = [
   // Industry

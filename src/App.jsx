@@ -10,10 +10,12 @@ import Skills from '@/components/skills/Skills'
 import Experience from '@/components/experience/Experience'
 import Certifications from '@/components/certifications/Certifications'
 import Contact from '@/components/contact/Contact'
+import LoadingIntro from '@/components/LoadingIntro'
 
 function App() {
   return (
     <div className="min-h-screen bg-navy-950 text-text-main">
+      <LoadingIntro />
       <PageLoader />
       <ScrollProgress />
       <CustomCursor />

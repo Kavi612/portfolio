@@ -1,0 +1,440 @@
+/* =====================================================
+   Kavi UI Design System Tokens & Component Styles
+   Prefixed with kv- to prevent collision with existing CSS
+   ===================================================== */
+
+:root {
+  /* Site theme tokens mapped to dark navy & cyber blue palette */
+  --kv-ink: #0a0f1e;
+  --kv-paper: #f1f5f9;
+  --kv-accent: #3b82f6;
+  --kv-accent-hover: #60a5fa;
+  --kv-accent-glow: rgba(59, 130, 246, 0.4);
+  --kv-turmeric: #e8a317;
+  --kv-line: rgba(255, 255, 255, 0.12);
+  --kv-line-glow: rgba(59, 130, 246, 0.25);
+  --kv-font: inherit;
+  --kv-surface: #0f172a;
+  --kv-surface-elevated: #162038;
+  --kv-muted: #94a3b8;
+  --kv-success: #10b981;
+}
+
+/* -----------------------------------------------------
+   FEATURE 1: Loading Intro Styles
+   ----------------------------------------------------- */
+
+.kv-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--kv-ink);
+  color: var(--kv-paper);
+  font-family: var(--kv-font);
+  user-select: none;
+  cursor: pointer;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 700ms cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: clip-path;
+}
+
+.kv-intro-overlay.kv-intro-exiting {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+
+.kv-intro-counter {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+.kv-intro-bar-track {
+  width: 100%;
+  max-width: 280px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.kv-intro-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--kv-accent), var(--kv-accent-hover));
+  border-radius: 9999px;
+  transition: width 80ms linear;
+  box-shadow: 0 0 12px var(--kv-accent-glow);
+}
+
+/* -----------------------------------------------------
+   FEATURE 2: Spotlight Cards Styles
+   ----------------------------------------------------- */
+
+.kv-spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.kv-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mx, -9999px) var(--my, -9999px),
+    rgba(59, 130, 246, 0.22),
+    rgba(30, 58, 138, 0.1) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.kv-spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(
+    420px circle at var(--mx, -9999px) var(--my, -9999px),
+    rgba(96, 165, 250, 0.95),
+    rgba(59, 130, 246, 0.45) 40%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .kv-spotlight:hover::before,
+  .kv-spotlight:hover::after {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .kv-spotlight::before,
+  .kv-spotlight::after {
+    display: none !important;
+  }
+}
+
+/* -----------------------------------------------------
+   FEATURE 3: Live Stats Strip Styles
+   ----------------------------------------------------- */
+
+.kv-stats-strip {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--kv-line);
+  border-bottom: 1px solid var(--kv-line);
+  padding: 0.75rem 0;
+  z-index: 20;
+}
+
+.kv-stats-strip-container {
+  display: flex;
+  width: max-content;
+}
+
+.kv-stats-track {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  animation: kv-marquee 36s linear infinite;
+  white-space: nowrap;
+}
+
+.kv-stats-strip:hover .kv-stats-track {
+  animation-play-state: paused;
+}
+
+@keyframes kv-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.kv-strip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--kv-paper);
+  letter-spacing: 0.02em;
+}
+
+.kv-strip-separator {
+  display: inline-block;
+  margin: 0 1.25rem;
+  color: var(--kv-accent-hover);
+  opacity: 0.45;
+  font-size: 0.5rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.kv-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--kv-success);
+  position: relative;
+  display: inline-block;
+}
+
+.kv-pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background-color: var(--kv-success);
+  opacity: 0.75;
+  animation: kv-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes kv-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------------------------------
+   FEATURE 4: Ask Kavi AI Assistant Styles
+   ----------------------------------------------------- */
+
+.kv-ask-trigger {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 8600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.15rem;
+  background-color: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 9999px;
+  color: var(--kv-paper);
+  font-family: var(--kv-font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(59, 130, 246, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kv-ask-trigger:hover {
+  transform: translateY(-2px);
+  border-color: var(--kv-accent-hover);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 24px var(--kv-accent-glow);
+}
+
+.kv-kbd-hint {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--kv-muted);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 0.15rem 0.4rem;
+  line-height: 1.2;
+}
+
+/* Backdrop */
+.kv-ask-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: rgba(6, 10, 20, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.kv-ask-backdrop.kv-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Chat Panel Modal */
+.kv-ask-panel {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 82vh;
+  background-color: var(--kv-surface);
+  border: 1px solid var(--kv-line-glow);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--kv-font);
+  color: var(--kv-paper);
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kv-ask-backdrop.kv-open .kv-ask-panel {
+  transform: scale(1) translateY(0);
+}
+
+/* Mobile bottom sheet view */
+@media (max-width: 640px) {
+  .kv-ask-backdrop {
+    align-items: flex-end;
+  }
+
+  .kv-ask-panel {
+    max-height: 88vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: translateY(100%);
+  }
+
+  .kv-ask-backdrop.kv-open .kv-ask-panel {
+    transform: translateY(0);
+  }
+
+  .kv-ask-trigger {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Header */
+.kv-ask-header {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--kv-line);
+  background-color: rgba(10, 15, 30, 0.6);
+}
+
+/* Suggestion Chips */
+.kv-chip {
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--kv-paper);
+  background-color: rgba(30, 58, 138, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 9999px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kv-chip:hover {
+  background-color: rgba(59, 130, 246, 0.25);
+  border-color: var(--kv-accent-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Typing Dots */
+.kv-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--kv-accent-hover);
+  animation: kv-typing 1.4s infinite ease-in-out both;
+}
+
+.kv-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.kv-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes kv-typing {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Focus outline accessibility */
+.kv-ask-trigger:focus-visible,
+.kv-chip:focus-visible,
+.kv-ask-panel button:focus-visible,
+.kv-ask-panel input:focus-visible {
+  outline: 2px solid var(--kv-accent-hover);
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------
+   Reduced Motion Accessibility Overrides
+   ----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .kv-intro-overlay,
+  .kv-intro-bar-fill,
+  .kv-spotlight::before,
+  .kv-spotlight::after,
+  .kv-ask-panel,
+  .kv-ask-backdrop {
+    transition: none !important;
+  }
+
+  .kv-stats-track {
+    animation: none !important;
+  }
+
+  .kv-stats-strip-container {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .kv-pulse-dot::after {
+    animation: none !important;
+  }
+
+  .kv-typing-dot {
+    animation: none !important;
+    opacity: 1;
+  }
+}
