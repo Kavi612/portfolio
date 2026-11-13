@@ -54,9 +54,8 @@ export const projects = [
     description:
       'Multi-agent GraphRAG system that generates Dockerfiles, runs docker build, and patches its own failures in a retry loop. 65% success rate vs 24% for naive RAG.',
     tech: ['Python', 'LangGraph', 'Tree-sitter', 'NetworkX'],
-    liveUrl: 'https://github.com/Kavi612',
-    githubUrl: 'https://github.com/Kavi612',
     image: 'dockforge.jpg',
+    inProgress: true,
   },
   {
     id: 'botstudio',

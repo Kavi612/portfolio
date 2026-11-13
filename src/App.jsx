@@ -21,7 +21,7 @@ function App() {
       <CustomCursor />
       <Navbar />
 
-      <main>
+      <main className="mx-auto w-full max-w-[1360px]">
         <Hero />
 
         <section id="about">

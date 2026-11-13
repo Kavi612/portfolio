@@ -69,7 +69,7 @@ export default function Projects() {
 
   return (
     <div className="bg-navy-950 py-16 sm:py-24 lg:py-28">
-      <div className="section-container mb-8 sm:mb-10">
+      <div className="section-container mb-8 sm:mb-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -114,15 +114,15 @@ export default function Projects() {
         viewport={viewportOnce}
       >
         {projects.map((project) => (
-          <motion.div key={project.id} variants={fadeUp}>
+          <motion.div key={project.id} variants={fadeUp} className="w-full max-w-4xl mx-auto">
             <ProjectCard project={project} />
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Desktop — horizontal snap carousel */}
+      {/* Desktop — horizontal snap carousel centered in section container */}
       <div
-        className="relative hidden outline-none md:block"
+        className="section-container relative hidden outline-none md:block"
         tabIndex={0}
         onKeyDown={onKeyDown}
         aria-roledescription="carousel"
@@ -130,15 +130,15 @@ export default function Projects() {
       >
         <div ref={scrollerRef} className="snap-x-container">
           {projects.map((project, index) => (
-            <div key={project.id} className="snap-item">
-              <div className="px-5 sm:px-8 lg:px-10">
+            <div key={project.id} className="snap-item flex justify-center py-4">
+              <div className="w-full max-w-4xl px-2 sm:px-4">
                 <ProjectCard project={project} isActive={index === active} />
               </div>
             </div>
           ))}
         </div>
 
-        <div className="section-container mt-6 flex items-center justify-between gap-4 sm:mt-8">
+        <div className="mt-8 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -163,7 +163,7 @@ export default function Projects() {
           </div>
 
           <div
-            className="flex flex-1 items-center justify-end gap-1"
+            className="flex flex-1 items-center justify-end gap-1.5"
             role="tablist"
             aria-label="Project indicators"
           >
